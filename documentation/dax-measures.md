@@ -44,6 +44,37 @@ DISTINCTCOUNT('sales data'[CustomerKey])
 
 **Purpose:** Count distinct customers based on their customer keys rather than counting individual sales transactions.
 
+#### 4. Bulk Orders
+**Formula:**
+```dax
+Bulk Orders =
+CALCULATE([TotalOrders],'sales data'[OrderQuantity]>1)
+```
+**Business Question:** Calculate a Bulk Orders measure that captures the order greater than
+1.
+
+#### 5. Total Bikes Sold
+```dax
+TotalBikeSold =
+CALCULATE([TotalOrders],'Categories Lookup'[CategoryName]="Bikes")
+```
+**Business Question:** How many bike have sold?
+
+#### 6. Total Bikes Return
+```dax
+TotalBikeReturn =
+CALCULATE([SumOfReturnQuantity],'Categories Lookup'[CategoryName]="Bikes")
+```
+***Business Question:** How many bike has return after sold?
+
+#### 7. Bike Return Rate
+```dax
+BikeReturnRate =
+CALCULATE([Return Rate],'Categories Lookup'[CategoryName]="Bikes")*100
+```
+** Business Problem:** What is the Bike return Rate?
+
+
 ### Concepts Applied
 - DAX Measures
 - SUM()
